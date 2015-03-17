@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery Ajax Practice</title>
+        <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                var url = '//blog.johnsonlu.org/~mag5323/ajax/ajax.php';
+                $('#getJson').click(function(e) {
+                    $.get(url, {show: 'people'}, function(response){
+                        console.log(response);
+                    });
+                });
+
+                $('#postName').click(function(e) {
+                    var name = window.prompt('Tell me your name');
+                    $.post(url, {name: name}, function(response){
+                        console.log(response);
+                    });
+                });
+
+                $('#testJson').click(function(e) {
+                    $.get('http://bot-rate.herokuapp.com/JPY', function(res){
+                        console.log(res);
+                    });
+                });
+            });
+        </script>
+    </head>
+
+    <body>
+        <button id="getJson">getJson</button>
+        <button id="postName">post</button>
+        <button id="testJson">testJson</button>
+    </body>
+</html>
